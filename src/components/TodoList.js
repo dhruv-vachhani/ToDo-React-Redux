@@ -12,7 +12,7 @@ export const TodoList = () => {
       {filterTodos.length ? (
         filterTodos.map((todo) => <Todo key={todo.id} todo={todo} />)
       ) : (
-        <div>No todos YAY!!</div>
+        <div className="d-block mx-auto">No task to display here!!</div>
       )}
     </div>
   );

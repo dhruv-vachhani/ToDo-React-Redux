@@ -1,26 +1,31 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { VISIBILITY_FILTER } from "../constants";
 import { setFilter } from "../redux/actions";
 
 export const VisibilityFilter = () => {
+  const { visibilityFilter } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   return (
-    <div className="d-flex justify-content-center flex-row">
+    <nav class="d-flex justify-content-center nav nav-tabs pt-5">
       {Object.keys(VISIBILITY_FILTER).map((filterkey) => {
         const currentFilter = VISIBILITY_FILTER[filterkey];
         return (
-          <div
+          <a
+            className={`nav-link p-3 mx-2 ${
+              currentFilter === visibilityFilter
+                ? "active text-primary"
+                : "text-dark"
+            }`}
             onClick={() => dispatch(setFilter(currentFilter))}
             key={filterkey}
-            className="p-3"
             href="#"
           >
             {currentFilter}
-          </div>
+          </a>
         );
       })}
-    </div>
+    </nav>
   );
 };

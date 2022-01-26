@@ -15,7 +15,7 @@ export const Todo = ({ todo }) => {
   };
 
   return (
-    <div className="form-check d-block">
+    <div className="form-check d-block mx-auto">
       <input
         className="form-check-input"
         type="checkbox"
