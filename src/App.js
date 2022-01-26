@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { AddTodo } from "./components/AddTodo";
+import { TodoList } from "./components/TodoList";
+import { VisibilityFilter } from "./components/VisibilityFilter";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container-sm mx-auto p-5">
+        <h1 className="mx-auto my-5 text-center">To-Do`s</h1>
+        <AddTodo />
+        <TodoList />
+        <VisibilityFilter />
+      </div>
     </div>
   );
 }
