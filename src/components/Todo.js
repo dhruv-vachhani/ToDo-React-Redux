@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { toggleTodo, deleteTodo } from "../redux/actions";
+import { toggleTodo, deleteTodo, editTodo } from "../redux/actions";
 
 export const Todo = ({ todo }) => {
   const [checked, setChecked] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editText, setEditText] = useState(todo.content);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -12,6 +15,11 @@ export const Todo = ({ todo }) => {
 
   const handleDelete = () => {
     dispatch(deleteTodo(todo.id));
+  };
+
+  const handleEdit = () => {
+    dispatch(editTodo(todo.id, editText));
+    setEditing(false);
   };
 
   const handleChecked = () => {
@@ -28,16 +36,40 @@ export const Todo = ({ todo }) => {
           id={todo.id}
           checked={checked}
         />
-        <label
-          className={`form-check-label + ${
-            checked ? "text-decoration-line-through" : ""
-          }`}
-          htmlFor={todo.id}
-        >
-          {todo.content}
-        </label>
+        {editing ? (
+          <input
+            className="form-control"
+            value={editText}
+            placeholder={todo.content}
+            onChange={(e) => setEditText(e.target.value)}
+          />
+        ) : (
+          <label
+            className={`form-check-label + ${
+              checked ? "text-decoration-line-through" : ""
+            }`}
+            htmlFor={todo.id}
+          >
+            {todo.content}
+          </label>
+        )}
       </div>
-      <div className="btn btn-danger" onClick={() => handleDelete(todo.id)}>
+      {editing ? (
+        <div className="btn btn-outline-success mx-2" onClick={handleEdit}>
+          Save
+        </div>
+      ) : (
+        <div
+          className="btn btn-outline-warning"
+          onClick={() => setEditing(true)}
+        >
+          Edit
+        </div>
+      )}
+      <div
+        className="btn btn-outline-danger mx-2"
+        onClick={() => handleDelete(todo.id)}
+      >
         x
       </div>
     </div>

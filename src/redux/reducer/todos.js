@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from "../actionsTypes";
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, EDIT_TODO } from "../actionsTypes";
 
 const initialState = {
   todos: [],
@@ -24,6 +24,14 @@ const todos = (state = initialState, action) => {
     case DELETE_TODO: {
       const { id } = action.payload;
       const todos = state.todos.filter((obj) => obj.id !== id);
+      return { todos };
+    }
+
+    case EDIT_TODO: {
+      const { id, content } = action.payload;
+      const todos = state.todos.map((obj) => {
+        return obj.id === id ? { ...obj, content } : obj;
+      });
       return { todos };
     }
 
