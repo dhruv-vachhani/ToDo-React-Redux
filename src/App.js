@@ -8,8 +8,8 @@ function App() {
       <div className="container-sm mx-auto p-5">
         <h1 className="mx-auto my-5 text-center">To-Do`s</h1>
         <AddTodo />
-        <TodoList />
         <VisibilityFilter />
+        <TodoList />
       </div>
     </div>
   );

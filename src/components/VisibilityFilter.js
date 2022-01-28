@@ -8,7 +8,7 @@ export const VisibilityFilter = () => {
   const dispatch = useDispatch();
 
   return (
-    <nav class="d-flex justify-content-center nav nav-tabs pt-5">
+    <nav class="d-flex justify-content-center nav nav-tabs pt-3 mb-5">
       {Object.keys(VISIBILITY_FILTER).map((filterkey) => {
         const currentFilter = VISIBILITY_FILTER[filterkey];
         return (

@@ -17,7 +17,7 @@ export const AddTodo = () => {
   };
 
   return (
-    <div className="mb-5 row justify-content-center">
+    <div className="mb-2 row justify-content-center">
       <input
         type="text"
         value={value}

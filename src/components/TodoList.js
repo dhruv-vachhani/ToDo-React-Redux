@@ -8,7 +8,7 @@ export const TodoList = () => {
   const filterTodos = getTodosByVisibilityFilter(todos, visibilityFilter);
 
   return (
-    <div className="mx-auto d-flex flex-column justify-content-center mb-1">
+    <div className="d-flex flex-column justify-content-center container-sm w-50 mb-1">
       {filterTodos.length ? (
         filterTodos.map((todo) => <Todo key={todo.id} todo={todo} />)
       ) : (
